@@ -1,11 +1,20 @@
-import {Text, View} from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Home from './components/Home/Home';
+import Section from './components/Section/Section';
+const Stack = createStackNavigator();
 function app() {
   return (
-    <View>
-      <Text>Jai Babaji</Text>
-      <Text>Gurudev Datta</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="home"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="home" component={Home} />
+        <Stack.Screen name="section" component={Section} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
