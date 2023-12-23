@@ -6,6 +6,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
   },
+  homeSubContainer: {
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export default styles;
