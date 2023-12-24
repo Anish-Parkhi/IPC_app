@@ -69,6 +69,7 @@ export default function Home() {
             width: '100%',
           }}
           numColumns={numsCols}
+          columnWrapperStyle={{justifyContent: 'space-around'}}
           ItemSeparatorComponent={() => <View style={{height: '100'}} />}
         />
       </View>
