@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F6F6F6',
     display: 'flex',
     flexDirection: 'column',
-    width: '48%',
+    width: '100%',
     height: 200,
     borderRadius: 10,
     justifyContent: 'center',
@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 0.4,
     alignSelf: 'flex-start',
     position: 'absolute',
     top: 0,
     zIndex: 1,
+    left: '32%',
   },
   chapterTitleText: {
     fontSize: 16,
@@ -38,17 +38,17 @@ const styles = StyleSheet.create({
   },
   chapterNameContainer: {
     padding: 5,
-    justifyContent: 'center', 
+    justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
   },
   chapterName: {
-    fontSize: 16,
+    fontSize: 14,
     color: 'black',
     fontWeight: 'bold',
-    justifyContent:'center',
+    justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   cardImageContainer: {
     display: 'flex',
@@ -57,15 +57,18 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     width: '30%',
     height: '30%',
-    borderRadius: 200/2,
+    borderRadius: 200 / 2,
     borderWidth: 0.4,
-    flexBasis: '30%'
+    flexBasis: '30%',
   },
   cardImageMain: {
     width: '100%',
     height: '100%',
-    borderRadius: 200/2,
-  }
+    borderRadius: 200 / 2,
+  },
+  touchableComponentContainer: {
+    width: '48%',
+  },
 });
 
 export default styles;

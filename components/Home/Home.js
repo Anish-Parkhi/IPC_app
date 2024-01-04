@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
+import {getApi} from '../../utils/baseApi/api';
 import Card from '../Card/Card';
 import styles from './style';
-
 const Data = [
   {
     id: 1,
@@ -49,15 +50,31 @@ const Data = [
 
 export default function Home() {
   const [numsCols, setNumsCols] = useState(2);
+  const navigation = useNavigation();
+  const handleCardPress = chapter_number => {
+    navigation.navigate('chapter', {chapter_number: chapter_number});
+  };
+  const [apiData, setApiData] = useState([]);
+  useEffect(() => {
+    getApi('api/uniqueChapters')
+      .then(response => {
+        setApiData(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+  console.log(apiData);
   return (
     <SafeAreaView style={styles.homeMainContainer}>
       <View style={styles.homeSubContainer}>
         <FlatList
-          data={Data}
-          renderItem={({item}) => (
+          data={apiData}
+          renderItem={({item, index}) => (
             <Card
-              chapter_name={item.chapter_name}
-              chapter_number={item.chapter_number}
+              handleCardPress={() => handleCardPress(item)}
+              chapter_name={item}
+              chapter_number={index}
             />
           )}
           key={item => item.id}
