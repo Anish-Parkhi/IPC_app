@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASR_URL = 'http://192.168.155.152:3000';
+const BASR_URL = 'http://192.168.48.152:3000';
 
 export const getApi = (url, params) => {
   return axios

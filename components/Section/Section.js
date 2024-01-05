@@ -1,16 +1,26 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import styles from './style'
-import { useRoute } from '@react-navigation/native'
+import {useRoute} from '@react-navigation/native';
+import React from 'react';
+import {Text, View} from 'react-native';
+import styles from './style.js';
 
 export default function Section() {
-  const route = useRoute()
-  const { chapter_number } = route.params;
-  console.log('chapter_number',chapter_number)
+  const route = useRoute();
+  const {data} = route.params;
+  console.log(data);
   return (
-    <View>
-      <Text>Section</Text>
-      <Text>{chapter_number}</Text>
+    <View style={styles.sectionMainContainer}>
+      <View style={styles.sectionNumberWrapper}>
+        <Text style={styles.sectionNameContainer}>Section {data.Section}</Text>
+      </View>
+      <View style={styles.horizontalRuleContainer}></View>
+      <View style={styles.sectionTitleWrapper}>
+        <Text style={styles.sectionTitleContainer}>{data.section_title}</Text>
+      </View>
+      <View style={styles.sectionDescriptionWrapper}>
+        <Text style={styles.sectionDescriptionContainer}>
+          {data.section_desc}
+        </Text>
+      </View>
     </View>
-  )
+  );
 }
