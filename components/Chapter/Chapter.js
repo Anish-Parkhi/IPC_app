@@ -43,6 +43,7 @@ export default function Chapter() {
       <FlatList
         contentContainerStyle={{gap: 14}}
         data={apiData}
+        style={{marginBottom: 30}}
         renderItem={({item}) => {
           return (
             <TouchableHighlight
