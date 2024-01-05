@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     display: 'flex', 
     alignItems: 'center',
     width: '100%',
+    padding: 10
   },
   homeSubContainer: {
     width: '100%',

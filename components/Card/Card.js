@@ -29,7 +29,12 @@ export default function Card(props) {
           />
         </View>
         <View style={styles.chapterNameContainer}>
-          <Text style={styles.chapterName}>{chapter_name}</Text>
+          <Text
+            numberOfLines={2}
+            ellipsizeMode="tail"
+            style={styles.chapterName}>
+            {chapter_name}
+          </Text>
         </View>
       </View>
     </TouchableHighlight>

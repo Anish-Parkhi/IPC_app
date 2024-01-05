@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.4,
     shadowColor: '#CFCFCF',
     borderColor: '#CFCFCF',
+    padding: 0
   },
   cardChapterContainer: {
     display: 'flex',
@@ -22,9 +23,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'flex-start',
     position: 'absolute',
-    top: 0,
+    top: 2,
     zIndex: 1,
     left: '32%',
+    // marginBottom: 5
   },
   chapterTitleText: {
     fontSize: 16,
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
     padding: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
+    width: '90%',
   },
   chapterName: {
     fontSize: 14,
@@ -60,6 +62,7 @@ const styles = StyleSheet.create({
     borderRadius: 200 / 2,
     borderWidth: 0.4,
     flexBasis: '30%',
+    marginTop: 9
   },
   cardImageMain: {
     width: '100%',

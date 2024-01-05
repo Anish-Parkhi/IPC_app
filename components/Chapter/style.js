@@ -12,6 +12,8 @@ const styles = StyleSheet.create({
   },
   chapterMainContainer: {
     padding: 10,
+    width: '100%',
+    flex: 1,
   },
   chapterNameContainer: {
     display: 'flex',
