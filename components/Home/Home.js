@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {Alert, SafeAreaView, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Loader from '../../assets/Loader/Loader';
 import {getApi} from '../../utils/baseApi/api';
@@ -23,6 +23,16 @@ export default function Home() {
       })
       .catch(error => {
         console.log(error);
+        Alert.alert('Error Loading the data !', 'Please try again later', [
+          {
+            text: 'Go to Home',
+            style:'cancel',
+            onPress: () => {
+              // BackHandler.exitApp()
+              navigation.navigate('home')
+            }
+          }
+        ])
       });
   }, []);
   return (

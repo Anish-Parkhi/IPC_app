@@ -1,6 +1,6 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View, ScrollView} from 'react-native';
 import {getApi} from '../../utils/baseApi/api.js';
 import styles from './style.js';
 
@@ -12,16 +12,10 @@ export default function Section() {
   const prevSection = data.Section - 1;
   const nextSection = data.Section + 1;
 
-  // no need of this prevData
-  const [prevData, setPrevData] = useState([]);
-
-
   const handlePreviousPress = () => {
     getApi(`api/sections/getByNumber/${prevSection}`)
       .then(response => {
-        // data = response.data;
-        setPrevData(response.data);
-        data = prevData;
+        data = response.data;
         navigation.replace('section', {data: data})
       })
       .catch(error => {
@@ -44,15 +38,11 @@ export default function Section() {
         Section Description
       </Text>
       <View style={styles.horizontalRuleContainerDesc}></View>
-      <View style={styles.sectionDescriptionWrapper}>
+      <ScrollView style={styles.sectionDescriptionWrapper}>
         <Text style={styles.sectionDescriptionContainer}>
           {data.section_desc}
         </Text>
-      </View>
-      {/* <View style={styles.buttonContainerMain}>
-        <Button style={{width: 80}} title='Previous' />
-        <Button title='Next' />
-      </View> */}
+      </ScrollView>
       <View style={styles.buttonContainerMain}>
         <TouchableOpacity
           style={{

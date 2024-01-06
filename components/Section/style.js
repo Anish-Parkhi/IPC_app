@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     color: 'black',
     width: '40%',
     alignSelf: 'center',
+    backgroundColor: 'black'
   },
   sectionTitleContainer: {
     color: 'black',
@@ -33,12 +34,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     padding: 10,
     marginTop: 10,
+    // marginBottom: 10
   },
   sectionDescriptionContainer: {
     color: 'black',
     fontSize: 18,
     textAlign: 'center',
     letterSpacing: 0.4,
+    marginBottom: 8
   },
   sectionDescriptionSubContainer: {
     alignSelf: 'center',
@@ -53,6 +56,7 @@ const styles = StyleSheet.create({
     width: '30%',
     alignSelf: 'center',
     marginTop: 5,
+    backgroundColor: 'black'
   },
   buttonContainerMain: {
     display: 'flex',

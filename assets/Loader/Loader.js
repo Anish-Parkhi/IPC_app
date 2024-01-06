@@ -4,7 +4,7 @@ import {Dimensions, View} from 'react-native';
 import styles from './style';
 
 export default function Loader() {
-    const height = Dimensions.get('window').height;
+  const height = Dimensions.get('window').height;
   const width = Dimensions.get('window').width;
   return (
     <View style={styles.loaderContainer}>

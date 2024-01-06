@@ -1,6 +1,6 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {Dimensions, Text, TouchableHighlight, View} from 'react-native';
+import {Dimensions, Text, TouchableHighlight, View, Alert} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Loader from '../../assets/Loader/Loader';
 import {getApi} from '../../utils/baseApi/api';
@@ -19,7 +19,20 @@ export default function Chapter() {
         setApiData(response.data);
         setLoading(false);
       })
-      .catch(err => [console.log(err)]);
+      .catch(err => {
+        console.log(err)
+        console.log('oops! error loading the data')
+        Alert.alert('Error Loading the data !', 'Please try again later', [
+          {
+            text: 'Go to Home',
+            style:'cancel',
+            onPress: () => {
+              navigation.navigate('home')
+            }
+          }
+        ])
+      }
+      );
   }, []);
   const handleCardPress = data => {
     navigation.navigate('section', {data: data});
