@@ -26,13 +26,13 @@ export default function Home() {
         Alert.alert('Error Loading the data !', 'Please try again later', [
           {
             text: 'Go to Home',
-            style:'cancel',
+            style: 'cancel',
             onPress: () => {
               // BackHandler.exitApp()
-              navigation.navigate('home')
-            }
-          }
-        ])
+              navigation.navigate('home');
+            },
+          },
+        ]);
       });
   }, []);
   return (
