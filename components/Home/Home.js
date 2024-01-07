@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {Alert, SafeAreaView, View} from 'react-native';
+import {Alert, SafeAreaView, TextInput, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Loader from '../../assets/Loader/Loader';
 import {getApi} from '../../utils/baseApi/api';
@@ -12,7 +12,10 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
   const handleCardPress = (chapter_name, chapter_number) => {
-    navigation.navigate('chapter', {chapter_name: chapter_name, chapter_number: chapter_number+1});
+    navigation.navigate('chapter', {
+      chapter_name: chapter_name,
+      chapter_number: chapter_number + 1,
+    });
   };
   const [apiData, setApiData] = useState([]);
   useEffect(() => {
@@ -35,12 +38,43 @@ export default function Home() {
         ]);
       });
   }, []);
+  const [search, setSearch] = useState(null);
+  const [searchApiData, setSearchApiData] = useState([]);
+  const handleSearchChange = text => {
+    setSearch(text);
+  };
+  const handleSearchApiCall = () => {
+    if (search != '') {
+      getApi(`api/sectionTitle/${search}`)
+        .then(res => {
+          setSearchApiData(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  };
+  console.log(searchApiData);
   return (
     <SafeAreaView style={styles.homeMainContainer}>
       {loading ? (
         <Loader />
       ) : (
         <View style={styles.homeSubContainer}>
+          {/* SearchBar  */}
+
+          <View style={styles.searchBarContainer}>
+            <TextInput
+              style={styles.textInputStyle}
+              onChangeText={handleSearchChange}
+              value={search}
+              placeholder="Search a crime"
+              onEndEditing={handleSearchApiCall}
+            />
+          </View>
+
+          {/* FlatList code  */}
+
           <FlatList
             data={apiData}
             renderItem={({item, index}) => {

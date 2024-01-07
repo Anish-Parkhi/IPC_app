@@ -8,7 +8,7 @@ import styles from './style.js';
 export default function Section() {
   const route = useRoute();
   let {data} = route.params;
-  const navigation = useNavigation();
+  const navigation = useNavigation(); 
   // console.log(data);
   const prevSection = data.Section - 1;
   const nextSection = data.Section + 1;
