@@ -11,8 +11,8 @@ export default function Home() {
   const [numsCols, setNumsCols] = useState(2);
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
-  const handleCardPress = chapter_name => {
-    navigation.navigate('chapter', {chapter_name: chapter_name});
+  const handleCardPress = (chapter_name, chapter_number) => {
+    navigation.navigate('chapter', {chapter_name: chapter_name, chapter_number: chapter_number+1});
   };
   const [apiData, setApiData] = useState([]);
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function Home() {
             renderItem={({item, index}) => {
               return (
                 <Card
-                  handleCardPress={() => handleCardPress(item)}
+                  handleCardPress={() => handleCardPress(item, index)}
                   chapter_name={item}
                   chapter_number={index + 1}
                 />

@@ -1,6 +1,6 @@
 import {useNavigation, useRoute} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {Dimensions, Text, TouchableHighlight, View, Alert} from 'react-native';
+import {Alert, Dimensions, Text, TouchableHighlight, View} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Loader from '../../assets/Loader/Loader';
 import {getApi} from '../../utils/baseApi/api';
@@ -12,6 +12,7 @@ export default function Chapter() {
   const {width, height} = Dimensions.get('window');
   const route = useRoute();
   const {chapter_name} = route.params;
+  const {chapter_number} = route.params;
   const [apiData, setApiData] = useState([]);
   useEffect(() => {
     getApi(`api/sections/${chapter_name}`)
@@ -20,19 +21,18 @@ export default function Chapter() {
         setLoading(false);
       })
       .catch(err => {
-        console.log(err)
-        console.log('oops! error loading the data')
+        console.log(err);
+        console.log('oops! error loading the data');
         Alert.alert('Error Loading the data !', 'Please try again later', [
           {
             text: 'Go to Home',
-            style:'cancel',
+            style: 'cancel',
             onPress: () => {
-              navigation.navigate('home')
-            }
-          }
-        ])
-      }
-      );
+              navigation.navigate('home');
+            },
+          },
+        ]);
+      });
   }, []);
   const handleCardPress = data => {
     navigation.navigate('section', {data: data});
@@ -45,7 +45,7 @@ export default function Chapter() {
       ) : (
         <View>
           <View style={styles.chapterNameContainer}>
-            <Text>Chapter 6</Text>
+            <Text>Chapter {chapter_number}</Text>
           </View>
 
           <View style={styles.chapterNameContainer}>

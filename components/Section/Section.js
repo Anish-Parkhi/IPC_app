@@ -49,7 +49,6 @@ export default function Section() {
         });
     }
   };
-  console.log(isNaN(prevSection));
 
   const handleNextPress = () => {
     if (isNaN(nextSection)) {
