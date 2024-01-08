@@ -1,9 +1,18 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {Alert, SafeAreaView, TextInput, View} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
+import {
+  Alert,
+  Dimensions,
+  Image,
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {FlatList, ScrollView} from 'react-native-gesture-handler';
 import Loader from '../../assets/Loader/Loader';
 import {getApi} from '../../utils/baseApi/api';
+import BigCard from '../BigCard/BigCard';
 import Card from '../Card/Card';
 import styles from './style';
 
@@ -39,12 +48,12 @@ export default function Home() {
       });
   }, []);
   const [search, setSearch] = useState(null);
-  const [searchApiData, setSearchApiData] = useState([]);
+  const [searchApiData, setSearchApiData] = useState(null);
   const handleSearchChange = text => {
     setSearch(text);
   };
   const handleSearchApiCall = () => {
-    if (search != '') {
+    if (search !== null) {
       getApi(`api/sectionTitle/${search}`)
         .then(res => {
           setSearchApiData(res.data);
@@ -52,9 +61,11 @@ export default function Home() {
         .catch(err => {
           console.log(err);
         });
+    } else if (search === '') {
+      setSearchApiData(null);
     }
   };
-  console.log(searchApiData);
+  const width = Dimensions.get('window').width;
   return (
     <SafeAreaView style={styles.homeMainContainer}>
       {loading ? (
@@ -71,34 +82,56 @@ export default function Home() {
               placeholder="Search a crime"
               onEndEditing={handleSearchApiCall}
             />
+
+            <TouchableOpacity
+              onPress={handleSearchApiCall}
+              style={[styles.searchButtonContaier, {marginTop: 25}]}>
+              <Image
+                style={styles.searchIconContainer}
+                source={require('../../assets/searchIcon.png')}
+              />
+            </TouchableOpacity>
           </View>
 
           {/* FlatList code  */}
 
-          <FlatList
-            data={apiData}
-            renderItem={({item, index}) => {
-              return (
-                <Card
-                  handleCardPress={() => handleCardPress(item, index)}
-                  chapter_name={item}
-                  chapter_number={index + 1}
-                />
-              );
-            }}
-            key={item => item.id}
-            style={{width: '100%'}}
-            contentContainerStyle={{
-              flexGrow: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: '100%',
-              gap: 15,
-            }}
-            numColumns={numsCols}
-            columnWrapperStyle={{justifyContent: 'space-around', gap: 4}}
-            ItemSeparatorComponent={() => <View style={{height: '100'}} />}
-          />
+          {searchApiData !== null ? (
+            <ScrollView
+              style={{
+                width: width,
+                alignSelf: 'center',
+                marginLeft: width / 20,
+              }}>
+              {searchApiData?.map((item, index) => {
+                return <BigCard data={item} key={index} />;
+              })}
+            </ScrollView>
+          ) : (
+            <FlatList
+              data={apiData}
+              renderItem={({item, index}) => {
+                return (
+                  <Card
+                    handleCardPress={() => handleCardPress(item, index)}
+                    chapter_name={item}
+                    chapter_number={index + 1}
+                  />
+                );
+              }}
+              key={item => item.id}
+              style={{width: '100%'}}
+              contentContainerStyle={{
+                flexGrow: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                gap: 15,
+              }}
+              numColumns={numsCols}
+              columnWrapperStyle={{justifyContent: 'space-around', gap: 4}}
+              ItemSeparatorComponent={() => <View style={{height: '100'}} />}
+            />
+          )}
         </View>
       )}
     </SafeAreaView>

@@ -21,10 +21,39 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 2,
     marginBottom: 10,
-    borderColor: '#ACACAC'
+    borderColor: '#ACACAC',
   },
   textInputStyle: {
     fontSize: 16,
+  },
+  searchBarContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    width: '90%',
+    borderWidth: 1,
+    marginBottom: 20,
+    borderRadius: 6,
+  },
+  textInputStyle: {
+    width: '85%',
+  },
+  clearButtonContainer: {
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  searchButtonContaier: {
+    width: '15%',
+    height: '100%',
+    alignContent: 'center',
+    alignSelf: 'center',
+    alignItems: 'center',
+  },
+  searchIconContainer: {
+    width: 20,
+    height: 20,
+    zIndex: 1,
+    objectFit: 'contain'
   },
 });
 
