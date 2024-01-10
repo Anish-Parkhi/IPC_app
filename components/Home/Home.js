@@ -48,6 +48,7 @@ export default function Home() {
       });
   }, []);
   const [search, setSearch] = useState(null);
+  //error in the below line
   const [searchApiData, setSearchApiData] = useState(null);
   const handleSearchChange = text => {
     setSearch(text);
