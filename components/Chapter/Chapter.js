@@ -14,11 +14,13 @@ export default function Chapter() {
   const {chapter_name} = route.params;
   const {chapter_number} = route.params;
   const [apiData, setApiData] = useState([]);
+  console.log(chapter_name)
   useEffect(() => {
     getApi(`api/sections/${chapter_name}`)
       .then(response => {
         setApiData(response.data);
         setLoading(false);
+        console.log(apiData)
       })
       .catch(err => {
         console.log(err);
@@ -73,7 +75,9 @@ export default function Chapter() {
                   }}>
                   <View style={styles.sectionNameContainer}>
                     <Text style={{color: 'black', fontSize: width / 22}}>
-                      Section {item.Section}:
+                      {
+                        item.Section === undefined ? 'Section - :' : `Section ${item.Section}:`
+                      }
                     </Text>
                     <Text
                       width="75%"

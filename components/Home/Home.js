@@ -14,50 +14,38 @@ import Loader from '../../assets/Loader/Loader';
 import {getApi} from '../../utils/baseApi/api';
 import BigCard from '../BigCard/BigCard';
 import Card from '../Card/Card';
+import sectionData from './sectionData';
 import styles from './style';
 
 export default function Home() {
   const [numsCols, setNumsCols] = useState(2);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   const handleCardPress = (chapter_name, chapter_number) => {
+    const chapter_name_without_space = chapter_name.toLowerCase();
     navigation.navigate('chapter', {
-      chapter_name: chapter_name,
-      chapter_number: chapter_number + 1,
+      chapter_name: chapter_name_without_space,
+      chapter_number: chapter_number,
     });
   };
-  const [apiData, setApiData] = useState([]);
-  useEffect(() => {
-    getApi('api/uniqueChapters')
-      .then(response => {
-        setApiData(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.log(error);
-        Alert.alert('Error Loading the data !', 'Please try again later', [
-          {
-            text: 'Go to Home',
-            style: 'cancel',
-            onPress: () => {
-              // BackHandler.exitApp()
-              navigation.navigate('home');
-            },
-          },
-        ]);
-      });
-  }, []);
   const [search, setSearch] = useState(null);
   //error in the below line
   const [searchApiData, setSearchApiData] = useState(null);
   const handleSearchChange = text => {
     setSearch(text);
   };
+  useEffect(() => {
+    Alert.alert(
+      'Note', 'This app does not have listing of all the chapters and newly added sections'
+    );
+  }, []);
   const handleSearchApiCall = () => {
-    if (search !== null) {
+    setLoading(true);
+    if (search !== null || search !== '') {
       getApi(`api/sectionTitle/${search}`)
         .then(res => {
           setSearchApiData(res.data);
+          setLoading(false);
         })
         .catch(err => {
           console.log(err);
@@ -66,6 +54,7 @@ export default function Home() {
       setSearchApiData(null);
     }
   };
+
   const width = Dimensions.get('window').width;
   return (
     <SafeAreaView style={styles.homeMainContainer}>
@@ -96,31 +85,33 @@ export default function Home() {
 
           {/* FlatList code  */}
 
-          {searchApiData !== null ? (
+          {searchApiData && searchApiData.length > 0 && search !== '' ? (
             <ScrollView
               style={{
                 width: width,
                 alignSelf: 'center',
                 marginLeft: width / 20,
               }}>
-              {searchApiData?.map((item, index) => {
-                return <BigCard data={item} key={index} />;
-              })}
+              {searchApiData.map((item, index) => (
+                <BigCard data={item} key={index} />
+              ))}
             </ScrollView>
           ) : (
             <FlatList
-              data={apiData}
-              renderItem={({item, index}) => {
+              data={sectionData}
+              renderItem={({item}) => {
                 return (
                   <Card
-                    handleCardPress={() => handleCardPress(item, index)}
-                    chapter_name={item}
-                    chapter_number={index + 1}
+                    handleCardPress={() =>
+                      handleCardPress(item.section_name, item.Section)
+                    }
+                    chapter_name={item.section_name}
+                    chapter_number={item.Section}
                   />
                 );
               }}
               key={item => item.id}
-              style={{width: '100%'}}
+              style={{width: '100%', marginBottom: 60}}
               contentContainerStyle={{
                 flexGrow: 1,
                 justifyContent: 'center',

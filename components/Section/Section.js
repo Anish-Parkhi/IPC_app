@@ -8,13 +8,17 @@ import styles from './style.js';
 export default function Section() {
   const route = useRoute();
   let {data} = route.params;
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
   // console.log(data);
   const prevSection = data.Section - 1;
   const nextSection = data.Section + 1;
   const [loading, setLoading] = useState(false);
 
+  console.log(typeof data?.Section);
+  console.log(data);
+
   const handlePreviousPress = () => {
+    console.log('clicked prev');
     if (isNaN(prevSection)) {
       Alert.alert(
         'This section is continuation ',
@@ -29,7 +33,6 @@ export default function Section() {
         ],
       );
     } else {
-      setLoading(true);
       getApi(`api/sections/getByNumber/${prevSection}`)
         .then(response => {
           const prevInfoData = response.data[0];
@@ -66,23 +69,27 @@ export default function Section() {
       );
     } else {
       setLoading(true);
-      getApi(`api/sections/getByNumber/${nextSection}`)
-        .then(res => {
-          const nextData = res.data[0];
-          navigation.replace('section', {data: nextData});
-          setLoading(false);
-        })
-        .catch(err => {
-          console.log(err);
-          Alert.alert('Oops!, error fetching the data', [
-            {
-              text: 'Go to home',
-              onPress: () => {
-                navigation.navigate('home');
+      if (typeof data?.Section === 'number') {
+        getApi(`api/sections/getByNumber/${nextSection}`)
+          .then(res => {
+            const nextData = res.data[0];
+            navigation.replace('section', {data: nextData});
+            setLoading(false);
+          })
+          .catch(err => {
+            console.log(err);
+            Alert.alert('Oops!, error fetching the data', [
+              {
+                text: 'Go to home',
+                onPress: () => {
+                  navigation.navigate('home');
+                },
               },
-            },
-          ]);
-        });
+            ]);
+          });
+      } else if (typeof data.Section === 'string') {
+        console.log('loda lassan');
+      }
     }
   };
 
@@ -94,7 +101,7 @@ export default function Section() {
         <ScrollView>
           <View style={styles.sectionNumberWrapper}>
             <Text style={styles.sectionNameContainer}>
-              Section {data.Section}
+              Section {data?.Section}
             </Text>
           </View>
           <View style={styles.horizontalRuleContainer}></View>

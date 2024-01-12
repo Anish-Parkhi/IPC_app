@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const BASR_URL = 'http://192.168.48.152:3000';
+// https://ipc-insights.onrender.com/ 
 
 export const getApi = (url, params) => {
   return axios
