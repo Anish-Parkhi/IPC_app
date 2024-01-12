@@ -1,7 +1,8 @@
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {
   Alert,
+  BackHandler,
   Dimensions,
   Image,
   SafeAreaView,
@@ -29,6 +30,7 @@ export default function Home() {
     });
   };
   const [search, setSearch] = useState(null);
+  const route = useRoute();
   //error in the below line
   const [searchApiData, setSearchApiData] = useState(null);
   const handleSearchChange = text => {
@@ -36,8 +38,35 @@ export default function Home() {
   };
   useEffect(() => {
     Alert.alert(
-      'Note', 'This app does not have listing of all the chapters and newly added sections'
+      'Note',
+      'This app does not have listing of all the chapters and newly added sections',
     );
+  }, []);
+
+  useEffect(() => {
+    const backAction = () => {
+      if (route.name === 'home') {
+        Alert.alert('Exit App ?', '', [
+          {
+            text: 'No',
+            onPress: () => null,
+            style: 'cancel',
+          },
+          {
+            text: 'Yes',
+            onPress: () => BackHandler.exitApp(),
+          },
+        ]);
+        return true;
+      } else {
+        return null;
+      }
+    };
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+    return () => backHandler.remove();
   }, []);
   const handleSearchApiCall = () => {
     setLoading(true);
@@ -54,6 +83,7 @@ export default function Home() {
       setSearchApiData(null);
     }
   };
+  console.log(typeof search);
 
   const width = Dimensions.get('window').width;
   return (
