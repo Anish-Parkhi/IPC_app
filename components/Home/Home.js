@@ -17,6 +17,7 @@ import BigCard from '../BigCard/BigCard';
 import Card from '../Card/Card';
 import sectionData from './sectionData';
 import styles from './style';
+import { useIsFocused } from '@react-navigation/native';
 
 export default function Home() {
   const [numsCols, setNumsCols] = useState(2);
@@ -31,6 +32,7 @@ export default function Home() {
   };
   const [search, setSearch] = useState(null);
   const route = useRoute();
+  const isFocused = useIsFocused();
   //error in the below line
   const [searchApiData, setSearchApiData] = useState(null);
   const handleSearchChange = text => {
@@ -45,7 +47,7 @@ export default function Home() {
 
   useEffect(() => {
     const backAction = () => {
-      if (route.name === 'home') {
+      if (isFocused) {
         Alert.alert('Exit App ?', '', [
           {
             text: 'No',
@@ -59,7 +61,7 @@ export default function Home() {
         ]);
         return true;
       } else {
-        return null;
+        return false;
       }
     };
     const backHandler = BackHandler.addEventListener(
@@ -67,7 +69,7 @@ export default function Home() {
       backAction,
     );
     return () => backHandler.remove();
-  }, []);
+  }, [isFocused]);
   const handleSearchApiCall = () => {
     setLoading(true);
     if (search !== null || search !== '') {
