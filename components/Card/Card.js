@@ -20,17 +20,17 @@ export default function Card(props) {
           <Text style={styles.chapterTitleText}>Chapter</Text>
           <Text style={styles.chapterNumberText}>{chapter_number}</Text>
         </View>
-        <View style={styles.cardImageContainer}>
+        {/* <View style={styles.cardImageContainer}>
           <Image
             style={styles.cardImageMain}
             // source={{uri: imageUrl}}
             source={require('./national_emblum_round.png')}
             onError={e => console.log(e)}
           />
-        </View>
+        </View> */}
         <View style={styles.chapterNameContainer}>
           <Text
-            numberOfLines={2}
+            numberOfLines={3}
             ellipsizeMode="tail"
             style={styles.chapterName}>
             {chapter_name}
