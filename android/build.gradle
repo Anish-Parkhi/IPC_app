@@ -14,7 +14,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle")
+        classpath("com.android.tools.build:gradle:8.2.0")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
     }
@@ -23,10 +23,10 @@ buildscript {
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 apply plugin: "com.facebook.react"
-apply plugin: "com.google.gms.google-services"
+// apply plugin: "com.google.gms.google-services"
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "your.app.package.name"
@@ -63,6 +63,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:28.0.0"
     implementation "com.facebook.react:react-native:+"  // Use the latest React Native version
+    // classpath 'com.google.gms:google-services:+'
 
     // Add your other dependencies here...
 
@@ -70,3 +71,5 @@ dependencies {
 }
 
 // Rest of your existing build.gradle file...
+// apply plugin: 'com.google.gms.google-services'
+
