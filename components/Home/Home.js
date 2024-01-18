@@ -1,10 +1,11 @@
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {
   Alert,
   BackHandler,
   Dimensions,
   Image,
+  Keyboard,
   SafeAreaView,
   TextInput,
   TouchableOpacity,
@@ -17,7 +18,6 @@ import BigCard from '../BigCard/BigCard';
 import Card from '../Card/Card';
 import sectionData from './sectionData';
 import styles from './style';
-import { useIsFocused } from '@react-navigation/native';
 
 export default function Home() {
   const [numsCols, setNumsCols] = useState(2);
@@ -31,7 +31,6 @@ export default function Home() {
     });
   };
   const [search, setSearch] = useState(null);
-  const route = useRoute();
   const isFocused = useIsFocused();
   //error in the below line
   const [searchApiData, setSearchApiData] = useState(null);
@@ -71,21 +70,21 @@ export default function Home() {
     return () => backHandler.remove();
   }, [isFocused]);
   const handleSearchApiCall = () => {
-    setLoading(true);
-    if (search !== null || search !== '') {
+    if (search !== null && search !== '') {
+      setLoading(true);
       getApi(`api/sectionTitle/${search}`)
         .then(res => {
           setSearchApiData(res.data);
           setLoading(false);
+          console.log('api call');
         })
         .catch(err => {
           console.log(err);
         });
-    } else if (search === '') {
+    } else if (search === '' || search === null) {
       setSearchApiData(null);
     }
   };
-  console.log(typeof search);
 
   const width = Dimensions.get('window').width;
   return (
@@ -101,23 +100,32 @@ export default function Home() {
               style={styles.textInputStyle}
               onChangeText={handleSearchChange}
               value={search}
-              placeholder="Search a crime"
+              placeholder="    Search a crime"
               onEndEditing={handleSearchApiCall}
             />
-
             <TouchableOpacity
-              onPress={handleSearchApiCall}
+              onPress={() => {
+                setSearch(null);
+                setSearchApiData(null);
+                Keyboard.dismiss();
+                // navigation.replace('home');
+              }}
               style={[styles.searchButtonContaier, {marginTop: 25}]}>
-              <Image
-                style={styles.searchIconContainer}
-                source={require('../../assets/searchIcon.png')}
-              />
+              {search !== null ? (
+                <Image
+                  style={styles.searchIconContainer}
+                  source={require('../../assets/close.png')}
+                />
+              ) : null}
             </TouchableOpacity>
           </View>
 
           {/* FlatList code  */}
 
-          {searchApiData && searchApiData.length > 0 && search !== '' ? (
+          {searchApiData &&
+          searchApiData.length > 0 &&
+          search !== '' &&
+          search !== null ? (
             <ScrollView
               style={{
                 width: width,

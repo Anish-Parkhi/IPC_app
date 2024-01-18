@@ -6,15 +6,15 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     width: '100%',
-    height: 200,
+    height: 150,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    // marginVertical: 10,
     borderWidth: 0.4,
     shadowColor: '#CFCFCF',
     borderColor: '#CFCFCF',
-    padding: 0
+    padding: 0,
+    gap: 4
   },
   cardChapterContainer: {
     display: 'flex',
@@ -22,10 +22,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'flex-start',
-    position: 'absolute',
-    top: 2,
-    zIndex: 1,
-    left: '32%',
+    width: '100%'
+    // position: 'absolute',
+    // top: 10,
+    // zIndex: 1,
+    // left: '32%',
     // marginBottom: 5
   },
   chapterTitleText: {
