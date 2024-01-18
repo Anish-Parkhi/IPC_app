@@ -20,7 +20,7 @@ export default function Card(props) {
           <Text style={styles.chapterTitleText}>Chapter</Text>
           <Text style={styles.chapterNumberText}>{chapter_number}</Text>
         </View>
-        
+
         <View style={styles.chapterNameContainer}>
           <Text
             numberOfLines={3}
