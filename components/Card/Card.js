@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, TouchableHighlight, View} from 'react-native';
+import {Text, TouchableHighlight, View} from 'react-native';
 import styles from './style';
 
 export default function Card(props) {
@@ -20,14 +20,7 @@ export default function Card(props) {
           <Text style={styles.chapterTitleText}>Chapter</Text>
           <Text style={styles.chapterNumberText}>{chapter_number}</Text>
         </View>
-        {/* <View style={styles.cardImageContainer}>
-          <Image
-            style={styles.cardImageMain}
-            // source={{uri: imageUrl}}
-            source={require('./national_emblum_round.png')}
-            onError={e => console.log(e)}
-          />
-        </View> */}
+
         <View style={styles.chapterNameContainer}>
           <Text
             numberOfLines={3}

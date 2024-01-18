@@ -13,7 +13,7 @@ export default function BigCard({data}) {
     <View style={styles.bigCardMainContainer}>
       <View style={styles.chapterNameContainer}>
         <Text style={styles.chapterName}>Chapter {data.chapter}</Text>
-        <View>
+        {/* <View>
           <Image
             style={{
               width: width / 7,
@@ -22,7 +22,7 @@ export default function BigCard({data}) {
             }}
             source={require('../Card/national_emblum_round.png')}
           />
-        </View>
+        </View> */}
       </View>
       <View style={styles.sectionNameContainer}>
         <Text style={styles.chapterTitle}>{data.chapter_title}</Text>
