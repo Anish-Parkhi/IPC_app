@@ -2,7 +2,7 @@
 
 # Indian Insights App
 
-![App Logo](https://github.com/Anish-Parkhi/IPC_app/assets/93964690/308f191d-db69-47b3-a03a-47f4bb8a8a31)
+![App Banner](https://github.com/Anish-Parkhi/IPC_app/assets/93964690/40e7176e-cf09-4c65-82de-2632c68a19a1)
 
 
 ## Overview
@@ -17,15 +17,13 @@ This is a comprehensive mobile application built with React Native that serves a
 
 ## Screenshots
 
-Insert screenshots of your application here, showcasing its key features. For example:
-
 ![Seemless Search](https://github.com/Anish-Parkhi/IPC_app/assets/93964690/40e7176e-cf09-4c65-82de-2632c68a19a1)
 
 Search seemlessly about any crime
 
 ![Simple UI]![image](https://github.com/Anish-Parkhi/IPC_app/assets/93964690/eed2e0ce-25e4-4418-9dfc-fe405c673359)
 
-*Caption for Screenshot 2.*
+Simple and minimal User Interface
 
 ## Getting Started
 
