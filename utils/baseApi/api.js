@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-const BASR_URL = 'http://192.168.48.152:3000';
-// https://ipc-insights.onrender.com/ 
+const BASR_URL = 'https://teal-easy-anemone.cyclic.app/';
+
+// https://teal-easy-anemone.cyclic.app/ 
+// https://ipc-insights.onrender.com/
 
 export const getApi = (url, params) => {
   return axios
