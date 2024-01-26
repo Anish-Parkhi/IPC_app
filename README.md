@@ -1,79 +1,78 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+---
 
-# Getting Started
+# Indian Insights App
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+![App Logo](https://github.com/Anish-Parkhi/IPC_app/assets/93964690/308f191d-db69-47b3-a03a-47f4bb8a8a31)
 
-## Step 1: Start the Metro Server
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Overview
 
-To start Metro, run the following command from the _root_ of your React Native project:
+This is a comprehensive mobile application built with React Native that serves as a reference for the Indian Penal Code (IPC). The app allows users to explore and search for different penal code sections related to various crimes.
 
-```bash
-# using npm
-npm start
+## Features
 
-# OR using Yarn
-yarn start
-```
+- **Search Functionality:** Users can easily search for specific crimes or sections within the IPC.
+- **Detailed Listings:** The app provides detailed information for each IPC section, helping users understand the corresponding laws.
+- **User-Friendly Interface:** A clean and intuitive user interface for seamless navigation.
 
-## Step 2: Start your Application
+## Screenshots
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+Insert screenshots of your application here, showcasing its key features. For example:
 
-### For Android
+![Seemless Search](https://github.com/Anish-Parkhi/IPC_app/assets/93964690/40e7176e-cf09-4c65-82de-2632c68a19a1)
 
-```bash
-# using npm
-npm run android
+Search seemlessly about any crime
 
-# OR using Yarn
-yarn android
-```
+![Simple UI]![image](https://github.com/Anish-Parkhi/IPC_app/assets/93964690/eed2e0ce-25e4-4418-9dfc-fe405c673359)
 
-### For iOS
+*Caption for Screenshot 2.*
 
-```bash
-# using npm
-npm run ios
+## Getting Started
 
-# OR using Yarn
-yarn ios
-```
+### Prerequisites
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+- Node.js and npm installed
+- MongoDB installed and running
+- React Native development environment set up
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### Installation
 
-## Step 3: Modifying your App
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/your-username/your-repo.git](https://github.com/Anish-Parkhi/IPC_app.git)](https://github.com/Anish-Parkhi/IPC_app.git)
+   ```
 
-Now that you have successfully run the app, let's modify it.
+2. Install server dependencies:
+   ```bash
+   cd server
+   npm install
+   ```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+3. Install client dependencies:
+   ```bash
+   cd client
+   npm install
+   ```
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+4. Configure the MongoDB connection in the `server/.env` file.
 
-## Congratulations! :tada:
+5. Start the server:
+   ```bash
+   cd server
+   npm start
+   ```
 
-You've successfully run and modified your React Native App. :partying_face:
+6. Start the client:
+   ```bash
+   cd client
+   npx react-native run-android
+   ```
 
-### Now what?
+## Usage
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+- Launch the application on your device or emulator.
+- Use the search feature to find specific crimes or browse the IPC listings.
+- Explore detailed information for each section.
 
-# Troubleshooting
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+---
