@@ -21,7 +21,7 @@ This is a comprehensive mobile application built with React Native that serves a
 
 Search seemlessly about any crime
 
-![Simple UI]![image](https://github.com/Anish-Parkhi/IPC_app/assets/93964690/eed2e0ce-25e4-4418-9dfc-fe405c673359)
+![Simple UI](https://github.com/Anish-Parkhi/IPC_app/assets/93964690/eed2e0ce-25e4-4418-9dfc-fe405c673359)
 
 Simple and minimal User Interface
 
