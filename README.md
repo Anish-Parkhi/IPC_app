@@ -4,6 +4,9 @@
 
 ![App Banner](https://github.com/Anish-Parkhi/IPC_app/assets/93964690/40e7176e-cf09-4c65-82de-2632c68a19a1)
 
+## Download Link
+
+https://play.google.com/store/apps/details?id=com.ipc_insights 
 
 ## Overview
 
