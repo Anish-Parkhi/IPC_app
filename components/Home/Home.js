@@ -113,7 +113,7 @@ export default function Home() {
                 color: 'black',
                 textAlign: 'left',
                 marginLeft: 10,
-                
+                width:'80%'
               }}
               placeholderTextColor='black'
               onChangeText={handleSearchChange}
