@@ -1,6 +1,7 @@
 ---
 
 # Indian Insights App
+[hello](#features)
 
 ![App Banner](https://github.com/Anish-Parkhi/IPC_app/assets/93964690/40e7176e-cf09-4c65-82de-2632c68a19a1)
 
@@ -13,6 +14,7 @@ https://play.google.com/store/apps/details?id=com.ipc_insights
 This is a comprehensive mobile application built with React Native that serves as a reference for the Indian Penal Code (IPC). The app allows users to explore and search for different penal code sections related to various crimes.
 
 ## Features
+# Features
 
 - **Search Functionality:** Users can easily search for specific crimes or sections within the IPC.
 - **Detailed Listings:** The app provides detailed information for each IPC section, helping users understand the corresponding laws.
