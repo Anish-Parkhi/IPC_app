@@ -14,13 +14,11 @@ export default function Chapter() {
   const {chapter_name} = route.params;
   const {chapter_number} = route.params;
   const [apiData, setApiData] = useState([]);
-  console.log(chapter_name)
   useEffect(() => {
     getApi(`api/sections/${chapter_name}`)
       .then(response => {
         setApiData(response.data);
         setLoading(false);
-        console.log(apiData)
       })
       .catch(err => {
         console.log(err);
@@ -47,25 +45,28 @@ export default function Chapter() {
       ) : (
         <View>
           <View style={styles.chapterNameContainer}>
-            <Text>Chapter {chapter_number}</Text>
+            <Text style={{color: 'black', fontSize: 16, marginTop: 8}}>
+              Chapter {chapter_number}
+            </Text>
           </View>
 
           <View style={styles.chapterNameContainer}>
             <Text
+              numberOfLines={2}
               style={{
                 fontSize: width / 15,
                 color: 'black',
                 fontWeight: '600',
                 textAlign: 'center',
+                textTransform: 'capitalize',
               }}>
               {chapter_name}
             </Text>
           </View>
           <View style={styles.horizontalRuleContainer}></View>
           <FlatList
-            contentContainerStyle={{gap: 14}}
+            contentContainerStyle={{gap: 14, paddingBottom: 100}}
             data={apiData}
-            style={{marginBottom: 30}}
             renderItem={({item}) => {
               return (
                 <TouchableHighlight
@@ -75,9 +76,9 @@ export default function Chapter() {
                   }}>
                   <View style={styles.sectionNameContainer}>
                     <Text style={{color: 'black', fontSize: width / 22}}>
-                      {
-                        item.Section === undefined ? 'Section - :' : `Section ${item.Section}:`
-                      }
+                      {item.Section === undefined
+                        ? 'Section - :'
+                        : `Section ${item.Section}: `}
                     </Text>
                     <Text
                       width="75%"

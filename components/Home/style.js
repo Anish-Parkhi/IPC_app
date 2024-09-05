@@ -16,24 +16,13 @@ const styles = StyleSheet.create({
 
   // searchBar styles
   searchBarContainer: {
-    borderWidth: 1,
-    width: '90%',
-    borderRadius: 8,
-    padding: 2,
-    marginBottom: 10,
-    borderColor: '#ACACAC',
-  },
-  textInputStyle: {
-    fontSize: 16,
-  },
-  searchBarContainer: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-end',
-    width: '90%',
+    justifyContent: 'space-between',
+    width: '95%',
     borderWidth: 1,
     marginBottom: 20,
-    borderRadius: 6,
+    borderRadius: 8,
   },
   textInputStyle: {
     width: '85%',
@@ -53,8 +42,16 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     zIndex: 1,
-    objectFit: 'contain'
+    objectFit: 'contain',
+    marginTop: 15
   },
+  logoHeader: {
+    fontSize: 20,
+    margin: 8,
+    color: 'black',
+    marginBottom: 12,
+    fontWeight: '600'
+  }
 });
 
 export default styles;

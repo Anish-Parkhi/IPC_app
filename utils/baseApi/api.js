@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const BASR_URL = 'https://teal-easy-anemone.cyclic.app/';
+const BASR_URL = 'http://192.168.206.152:3000';
 
-//render url
-// https://ipc-insights.onrender.com/ 
+// https://teal-easy-anemone.cyclic.app/
+// https://ipc-insights.onrender.com/
 
 // cyclic URL
 //https://teal-easy-anemone.cyclic.app/

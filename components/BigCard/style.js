@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
     borderColor: '#D7D7D7',
     padding: 15,
     backgroundColor: '#EEEEEE',
-    width: '90%',
     margin: 10,
+    borderBlockColor: 'black'
   },
   chapterName: {
     fontSize: 20,

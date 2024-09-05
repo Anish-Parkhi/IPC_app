@@ -1,20 +1,19 @@
-import {useIsFocused, useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import {
   Alert,
   BackHandler,
   Dimensions,
   Image,
-  Keyboard,
   SafeAreaView,
+  Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import {FlatList, ScrollView} from 'react-native-gesture-handler';
+import { FlatList } from 'react-native-gesture-handler';
 import Loader from '../../assets/Loader/Loader';
-import {getApi} from '../../utils/baseApi/api';
-import BigCard from '../BigCard/BigCard';
+import { getApi } from '../../utils/baseApi/api';
 import Card from '../Card/Card';
 import sectionData from './sectionData';
 import styles from './style';
@@ -44,6 +43,7 @@ export default function Home() {
     );
   }, []);
 
+
   useEffect(() => {
     const backAction = () => {
       if (isFocused) {
@@ -69,6 +69,9 @@ export default function Home() {
     );
     return () => backHandler.remove();
   }, [isFocused]);
+
+
+
   const handleSearchApiCall = () => {
     if (search !== null && search !== '') {
       setLoading(true);
@@ -76,11 +79,15 @@ export default function Home() {
         .then(res => {
           setSearchApiData(res.data);
           setLoading(false);
-          console.log('api call');
+          navigation.navigate('search', {
+            data: res.data,
+            search: search
+          })
         })
         .catch(err => {
           console.log(err);
         });
+        
     } else if (search === '' || search === null) {
       setSearchApiData(null);
     }
@@ -93,51 +100,39 @@ export default function Home() {
         <Loader />
       ) : (
         <View style={styles.homeSubContainer}>
+          <View style={styles.logoContainer}>
+            <Text style={styles.logoHeader}>IPC Insights</Text>
+          </View>
+
           {/* SearchBar  */}
 
           <View style={styles.searchBarContainer}>
             <TextInput
-              style={styles.textInputStyle}
+              style={{
+                fontSize: 15,
+                color: 'black',
+                textAlign: 'left',
+                marginLeft: 10,
+                width:'80%'
+              }}
+              placeholderTextColor='black'
               onChangeText={handleSearchChange}
               value={search}
-              placeholder="    Search a crime"
+              placeholder="Search a crime   eg. fraud"
               onEndEditing={handleSearchApiCall}
             />
-            <TouchableOpacity
-              onPress={() => {
-                setSearch(null);
-                setSearchApiData(null);
-                Keyboard.dismiss();
-                // navigation.replace('home');
-              }}
-              style={[styles.searchButtonContaier, {marginTop: 25}]}>
-              {search !== null ? (
+            <TouchableOpacity style={styles.searchButtonContaier} onPress={handleSearchApiCall}
+            >
                 <Image
                   style={styles.searchIconContainer}
-                  source={require('../../assets/close.png')}
+                  source={require('../../assets/searchIcon.png')}
                 />
-              ) : null}
             </TouchableOpacity>
           </View>
 
           {/* FlatList code  */}
 
-          {searchApiData &&
-          searchApiData.length > 0 &&
-          search !== '' &&
-          search !== null ? (
-            <ScrollView
-              style={{
-                width: width,
-                alignSelf: 'center',
-                marginLeft: width / 20,
-              }}>
-              {searchApiData.map((item, index) => (
-                <BigCard data={item} key={index} />
-              ))}
-            </ScrollView>
-          ) : (
-            <FlatList
+          <FlatList
               data={sectionData}
               renderItem={({item}) => {
                 return (
@@ -158,12 +153,14 @@ export default function Home() {
                 alignItems: 'center',
                 width: '100%',
                 gap: 15,
+                paddingBottom: 50
               }}
               numColumns={numsCols}
               columnWrapperStyle={{justifyContent: 'space-around', gap: 4}}
               ItemSeparatorComponent={() => <View style={{height: '100'}} />}
             />
-          )}
+
+
         </View>
       )}
     </SafeAreaView>

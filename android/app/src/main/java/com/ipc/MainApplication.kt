@@ -1,4 +1,4 @@
-package com.ipc
+package com.ipc_insights
 
 import android.app.Application
 import com.facebook.react.PackageList
