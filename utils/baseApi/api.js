@@ -5,6 +5,9 @@ const BASR_URL = 'http://192.168.206.152:3000';
 // https://teal-easy-anemone.cyclic.app/
 // https://ipc-insights.onrender.com/
 
+// cyclic URL
+//https://teal-easy-anemone.cyclic.app/
+
 export const getApi = (url, params) => {
   return axios
     .get(`${BASR_URL}/${url}`, {params})
