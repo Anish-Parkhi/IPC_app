@@ -1,5 +1,6 @@
-import { useIsFocused, useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
+import {Button} from '@rneui/base';
+import React, {useEffect, useState} from 'react';
 import {
   Alert,
   BackHandler,
@@ -9,11 +10,11 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import {FlatList} from 'react-native-gesture-handler';
 import Loader from '../../assets/Loader/Loader';
-import { getApi } from '../../utils/baseApi/api';
+import {getApi} from '../../utils/baseApi/api';
 import Card from '../Card/Card';
 import sectionData from './sectionData';
 import styles from './style';
@@ -43,7 +44,6 @@ export default function Home() {
     );
   }, []);
 
-
   useEffect(() => {
     const backAction = () => {
       if (isFocused) {
@@ -70,8 +70,6 @@ export default function Home() {
     return () => backHandler.remove();
   }, [isFocused]);
 
-
-
   const handleSearchApiCall = () => {
     if (search !== null && search !== '') {
       setLoading(true);
@@ -81,13 +79,12 @@ export default function Home() {
           setLoading(false);
           navigation.navigate('search', {
             data: res.data,
-            search: search
-          })
+            search: search,
+          });
         })
         .catch(err => {
           console.log(err);
         });
-        
     } else if (search === '' || search === null) {
       setSearchApiData(null);
     }
@@ -113,54 +110,62 @@ export default function Home() {
                 color: 'black',
                 textAlign: 'left',
                 marginLeft: 10,
-                width:'80%'
+                width: '80%',
               }}
-              placeholderTextColor='black'
+              placeholderTextColor="black"
               onChangeText={handleSearchChange}
               value={search}
               placeholder="Search a crime   eg. fraud"
               onEndEditing={handleSearchApiCall}
             />
-            <TouchableOpacity style={styles.searchButtonContaier} onPress={handleSearchApiCall}
-            >
-                <Image
-                  style={styles.searchIconContainer}
-                  source={require('../../assets/searchIcon.png')}
-                />
+            <TouchableOpacity
+              style={styles.searchButtonContaier}
+              onPress={handleSearchApiCall}>
+              <Image
+                style={styles.searchIconContainer}
+                source={require('../../assets/searchIcon.png')}
+              />
             </TouchableOpacity>
           </View>
 
           {/* FlatList code  */}
 
+          <View>
+            <Button
+              onPress={() => {
+                navigation.navigate('NLP');
+              }}>
+              Navigate to NLP
+            </Button>
+          </View>
+
           <FlatList
-              data={sectionData}
-              renderItem={({item}) => {
-                return (
-                  <Card
-                    handleCardPress={() =>
-                      handleCardPress(item.section_name, item.Section)
-                    }
-                    chapter_name={item.section_name}
-                    chapter_number={item.Section}
-                  />
-                );
-              }}
-              key={item => item.id}
-              style={{width: '100%', marginBottom: 60}}
-              contentContainerStyle={{
-                flexGrow: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                gap: 15,
-                paddingBottom: 50
-              }}
-              numColumns={numsCols}
-              columnWrapperStyle={{justifyContent: 'space-around', gap: 4}}
-              ItemSeparatorComponent={() => <View style={{height: '100'}} />}
-            />
-
-
+            data={sectionData}
+            renderItem={({item}) => {
+              return (
+                <Card
+                  handleCardPress={() =>
+                    handleCardPress(item.section_name, item.Section)
+                  }
+                  chapter_name={item.section_name}
+                  chapter_number={item.Section}
+                />
+              );
+            }}
+            key={item => item.id}
+            style={{width: '100%', marginBottom: 60}}
+            contentContainerStyle={{
+              flexGrow: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              gap: 15,
+              paddingBottom: 50,
+            }}
+            numColumns={numsCols}
+            columnWrapperStyle={{justifyContent: 'space-around', gap: 4}}
+            ItemSeparatorComponent={() => <View style={{height: '100'}} />}
+          />
         </View>
       )}
     </SafeAreaView>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASR_URL = 'http://192.168.206.152:3000';
+const BASR_URL = 'http://192.168.1.40:3000';
 
 // https://teal-easy-anemone.cyclic.app/
 // https://ipc-insights.onrender.com/
