@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "ipc.app"
-               BlueprintName = "ipc"
-               ReferencedContainer = "container:ipc.xcodeproj">
+               BuildableName = "IPCInsights.app"
+               BlueprintName = "IPCInsights"
+               ReferencedContainer = "container:IPCInsights.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "ipcTests.xctest"
-               BlueprintName = "ipcTests"
-               ReferencedContainer = "container:ipc.xcodeproj">
+               BuildableName = "IPCInsightsTests.xctest"
+               BlueprintName = "IPCInsightsTests"
+               ReferencedContainer = "container:IPCInsights.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ipc.app"
-            BlueprintName = "ipc"
-            ReferencedContainer = "container:ipc.xcodeproj">
+            BuildableName = "IPCInsights.app"
+            BlueprintName = "IPCInsights"
+            ReferencedContainer = "container:IPCInsights.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ipc.app"
-            BlueprintName = "ipc"
-            ReferencedContainer = "container:ipc.xcodeproj">
+            BuildableName = "IPCInsights.app"
+            BlueprintName = "IPCInsights"
+            ReferencedContainer = "container:IPCInsights.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
